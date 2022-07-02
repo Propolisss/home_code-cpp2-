@@ -6,7 +6,7 @@
 #include <cmath>
 #include <set>
 #include <numeric>
-// test
+
 
 
 bool all_chet(uint64_t n)
