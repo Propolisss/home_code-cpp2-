@@ -97,7 +97,7 @@ uint64_t count_simple_dels(uint64_t n)
 	return count;
 }
 
-
+// not my class, its from lesson
 class MyString
 {
 public:
@@ -202,6 +202,8 @@ private:
 	int length;
 };
 
+
+// my class
 class Point
 {
 public:
@@ -282,6 +284,23 @@ public:
 		return temp;
 	}
 
+	bool operator == (const Point& other)
+	{
+		return (this->x == other.x && this->y == other.y);
+	}
+
+	bool operator != (const Point& other)
+	{
+		return !(this->x == other.x && this->y == other.y);
+	}
+
+
+	void Print()
+	{
+		std::cout << this->x << ' ' << this->y << '\n';
+	}
+
+
 private:
 	int x;
 	int y;
@@ -301,6 +320,12 @@ int main()
 	num = num1 + num2;
 	num1 = num++;
 	num2 = ++num;
+
+
+	num1.Print();
+	num2.Print();
+	auto result = num1 != num2;
+
 
 	return 0;
 }
