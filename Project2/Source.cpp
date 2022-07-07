@@ -97,6 +97,9 @@ uint64_t count_simple_dels(uint64_t n)
 	return count;
 }
 
+
+
+
 // not my class, it's from lesson
 class MyString
 {
@@ -266,15 +269,20 @@ private:
 class Point
 {
 public:
+
+	static int count;
+
 	Point()
 	{
 		x = 0;
 		y = 0;
 	}
+
 	Point(const int& _x, const int& _y)
 	{
 		this->x = _x;
 		this->y = _y;
+		count++;
 	}
 
 	Point(const Point& other)
@@ -358,12 +366,22 @@ public:
 		std::cout << this->x << ' ' << this->y << '\n';
 	}
 
+	~Point()
+	{
+		x = 0;
+		y = 0;
+	}
+
 
 
 private:
 	int x;
 	int y;
 };
+
+int Point::count = 0;
+
+
 
 
 
@@ -383,7 +401,7 @@ int main()
 	num2.Print();
 	auto res = num1 != num2;
 
-
+	
 
 	MyString str("Hello");
 	MyString str2("World");
@@ -391,7 +409,7 @@ int main()
 	MyString result;
 	result = str + str2;
 
-
+	std::cout << Point::count << '\n';
 
 	return 0;
 }
