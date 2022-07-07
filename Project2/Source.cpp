@@ -313,7 +313,7 @@ public:
 		return *this;
 	}
 
-	Point& operator = (Point&& other)
+	Point& operator = (const Point&& other)
 	{
 		this->x = other.x;
 		this->y = other.y;
@@ -398,6 +398,91 @@ int Point::count = 0;
 
 
 
+class Test_class
+{
+public:
+	void Print()
+	{
+		tmp.Print_m();
+	}
+	
+
+private:
+	
+	class Test_inner_class
+	{
+	public:
+		Test_inner_class(int val1, int val2)
+		{
+			this->_x = val1;
+			this->_y = val2;
+		}
+
+		void Print_m()
+		{
+			std::cout << "функция вложенного класса";
+		}
+
+
+	private:
+		int _x;
+		int _y;
+	};
+	
+
+	Test_inner_class tmp{ 3, 4 };
+};
+
+
+class Image
+{
+public:
+	void GetImageInfo()
+	{
+		for (size_t i = 0; i < LENGTH; i++)
+		{
+			std::cout << i << ' ' << pixels[i].GetInfo() << '\n';
+		}
+	}
+
+private:
+	class Pixel
+	{
+	public:
+		Pixel(int val1, int val2, int val3)
+		{
+			this->r = val1;
+			this->g = val2;
+			this->b = val3;
+		}
+
+		std::string GetInfo()
+		{
+			return "rgb";
+		}
+
+	private:
+		int r;
+		int g;
+		int b;
+	};
+
+	static const int LENGTH = 5;
+
+
+	Pixel x{ 1, 2, 3 };
+
+	Pixel pixels[LENGTH]
+	{
+		Pixel(0, 4, 64),
+		Pixel(2, 3, 4),
+		Pixel(12, 3, 54),
+		Pixel(0, 4, 64),
+		Pixel(0, 4, 64)
+	};
+
+
+};
 
 
 int main()
@@ -425,6 +510,16 @@ int main()
 	result = str + str2;
 
 	std::cout << Point::count << '\n';
+
+	Test_class x;
+	x.Print();
+	
+
+
+	Image img;
+	img.GetImageInfo();
+	
+	
 
 	return 0;
 }
