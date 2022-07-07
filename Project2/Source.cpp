@@ -291,6 +291,13 @@ public:
 		this->y = other.y;
 	}
 
+	Point(Point&& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+	}
+
+
 	Point& swap()
 	{
 		auto temp = this->x;
@@ -305,6 +312,14 @@ public:
 		this->y = other.y;
 		return *this;
 	}
+
+	Point& operator = (Point&& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		return *this;
+	}
+
 
 	Point operator + (const Point& other)
 	{
