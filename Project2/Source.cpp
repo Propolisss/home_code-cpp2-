@@ -546,8 +546,6 @@ private:
 protected:
 	int parent_protected = 3;
 };
-
-
 class Child : public Parent
 {
 public:
@@ -575,6 +573,72 @@ protected:
 };
 
 
+
+class Human
+{
+public:
+	Human()
+	{
+		this->weight = 0;
+		this->age = 0;
+		this->height = 0;
+		this->name = "";
+	}
+
+	Human(const int _weight, const int _age, const int _height, const std::string _name)
+	{
+		this->weight = _weight;
+		this->age = _age;
+		this->height = _height;
+		this->name = _name;
+	}
+
+
+protected:
+	int weight;
+	int age;
+	int height;
+	std::string name;
+};
+
+class Student : public Human
+{
+public:
+
+	Student() : Human()
+	{
+		this->profile = "";
+		this->group = "";
+	}
+
+	Student(const int _weight, const int _age, const int _height, const std::string _name) : Human(_weight, _age, _height, _name)
+	{
+
+	}
+
+	void SetGroup(const std::string _group)
+	{
+		this->group = _group;
+	}
+	void SetProfile(const std::string _profile)
+	{
+		this->profile = _profile;
+	}
+
+	std::string GetGroup()
+	{
+		return this->group;
+	}
+
+	std::string GetProfile()
+	{
+		return this->profile;
+	}
+
+private:
+	std::string group;
+	std::string profile;
+};
 
 int main()
 {
@@ -612,8 +676,17 @@ int main()
 	
 
 	Parent par(12);
-
 	Child child;
+
+
+
+
+	Human human(60, 17, 175, "Artem");
+
+	Student student(1212, 5454, 54654, "aaaaa");
+	student.SetGroup("first");
+	student.SetProfile("Math");
+
 
 
 
