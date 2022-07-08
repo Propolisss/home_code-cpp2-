@@ -120,6 +120,23 @@ uint64_t count_simple_dels(uint64_t n)
 	}
 	return count;
 }
+template <class T>
+void bubble_sort(std::vector<T> nums)
+{
+	bool isSorted = false;
+	while (!isSorted)
+	{
+		isSorted = true;
+		for (size_t i = 1; i < nums.size(); i++)
+		{
+			if (nums[i] < nums[i - 1])
+			{
+				isSorted = false;
+				std::swap(nums[i], nums[i - 1]);
+			}
+		}
+	}
+}
 
 
 
@@ -579,6 +596,7 @@ int main()
 	Parent par;
 
 	Child child;
+
 
 
 	return 0;
