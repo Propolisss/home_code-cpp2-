@@ -485,6 +485,39 @@ private:
 };
 
 
+
+
+class Parent
+{
+public:
+	int parent_public = 1;
+private:
+	int parent_private = 2;
+protected:
+	int parent_protected = 3;
+};
+
+
+class Child : protected Parent
+{
+public:
+	int child_public = 4;
+
+
+	void Print()
+	{
+		//
+	}
+
+
+private:
+	int child_private = 5;
+protected:
+	int child_protected = 6;
+};
+
+
+
 int main()
 {
 	setlocale(LC_ALL, "ru");
@@ -515,11 +548,16 @@ int main()
 	x.Print();
 	
 
-
 	Image img;
 	img.GetImageInfo();
 	
 	
+
+	Parent par;
+
+	Child child;
+
+
 
 	return 0;
 }
