@@ -7,8 +7,32 @@
 #include <set>
 #include <numeric>
 
+template <class T>
+bool binary_search(std::vector<T> nums, T value)
+{
+	T left = 0;
+	T right = nums.size() - 1;
+	T mid;
 
 
+	while (left <= right)
+	{
+		mid = (left + right) / 2;
+		if (nums[mid] == value)
+		{
+			return true;
+		}
+		else if (nums[mid] > value)
+		{
+			right = mid - 1;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+	return false;
+}
 bool all_chet(uint64_t n)
 {
 	auto tmp = n;
@@ -393,7 +417,6 @@ private:
 	int x;
 	int y;
 };
-
 int Point::count = 0;
 
 
@@ -556,7 +579,6 @@ int main()
 	Parent par;
 
 	Child child;
-
 
 
 	return 0;
