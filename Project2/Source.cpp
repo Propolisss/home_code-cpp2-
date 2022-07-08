@@ -530,6 +530,16 @@ private:
 class Parent
 {
 public:
+	Parent()
+	{
+		parent_public = 0;
+	}
+
+	Parent(const int value)
+	{
+		parent_public = value;
+	}
+
 	int parent_public = 1;
 private:
 	int parent_private = 2;
@@ -538,10 +548,18 @@ protected:
 };
 
 
-class Child : protected Parent
+class Child : public Parent
 {
 public:
 	int child_public = 4;
+
+	Child() : Parent() {}
+
+	Child(const int value) : Parent(value)
+	{
+
+	}
+
 
 
 	void Print()
@@ -593,7 +611,7 @@ int main()
 	
 	
 
-	Parent par;
+	Parent par(12);
 
 	Child child;
 
