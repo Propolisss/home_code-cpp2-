@@ -577,6 +577,10 @@ protected:
 class Human
 {
 public:
+
+	virtual void PrintInfo() = 0;
+
+
 	Human()
 	{
 		this->weight = 0;
@@ -635,12 +639,60 @@ public:
 		return this->profile;
 	}
 
-
+	void PrintInfo() override
+	{
+		std::cout << this->age << ' ' << this->height << ' ' << this->weight << ' ' << this->name << ' ' << this->group << ' ' << this->profile << '\n';
+	}
 
 
 private:
 	std::string group;
 	std::string profile;
+};
+
+class Professor : public Human
+{
+public:
+	Professor() : Human() 
+	{
+		this->experience = 0;
+		this->lesson = "";
+	}
+
+	Professor(const int _weight, const int _age, const int _height, const std::string _name) : Human(_weight, _age, _height, _name)
+	{
+
+	}
+
+	std::string GetLesson()
+	{
+		return this->lesson;
+	}
+
+	int GetExperience()
+	{
+		return this->experience;
+	}
+
+	void SetLesson(const std::string& _lesson)
+	{
+		this->lesson = _lesson;
+	}
+
+	void SetExperience(const int& _experience)
+	{
+		this->experience = _experience;
+	}
+
+
+	void PrintInfo() override
+	{
+		std::cout << this->age << ' ' << this->height << ' ' << this->weight << ' ' << this->name << ' ' << this->lesson << ' ' << this->experience << '\n';
+	}
+
+private:
+	std::string lesson;
+	int experience;
 };
 
 
@@ -746,17 +798,23 @@ int main()
 
 
 
-	Human human(60, 17, 175, "Artem");
 
 	Student st1;
 	Student student(1212, 5454, 54654, "aaaaa");
 	student.SetGroup("first");
 	student.SetProfile("Math");
+	student.PrintInfo();
+	st1.PrintInfo();
+
+	Professor babka(50, 1000, 150, "Людмила Николаевна");
+	babka.SetExperience(1000);
+	babka.SetLesson("Math");
+	babka.PrintInfo();
+
 
 
 	People people1("Alex");
 	MyChild mychild("John");
-
 
 	Man man;
 	man.PrintInfo(&mychild);
