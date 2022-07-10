@@ -635,9 +635,74 @@ public:
 		return this->profile;
 	}
 
+
+
+
 private:
 	std::string group;
 	std::string profile;
+};
+
+
+class People
+{
+public:
+	People()
+	{
+		this->Name = "";
+	}
+
+	People(const std::string& _name)
+	{
+		this->Name = _name;
+	}
+
+	virtual void PrintInfo()
+	{
+		std::cout << Name << '\n';
+	}
+
+
+protected:
+	std::string Name;
+};
+class MyChild : public People
+{
+public:
+	MyChild() : People()
+	{
+		this->weight = 0;
+		this->height = 0;
+	}
+
+	MyChild(const int& _weight, const int& _height)
+	{
+		this->weight = _weight;
+		this->height = _height;
+	}
+
+	MyChild(const std::string& _name) : People(_name)
+	{
+		this->weight = 0;
+		this->height = 0;
+	}
+
+	void PrintInfo() override
+	{
+		std::cout << this->Name << ' ' << this->weight << ' ' << this->height << '\n';
+	}
+
+private:
+	int weight;
+	int height;
+};
+class Man
+{
+public:
+	void PrintInfo(People* _people)
+	{
+		_people->PrintInfo();
+	}
 };
 
 int main()
@@ -683,12 +748,18 @@ int main()
 
 	Human human(60, 17, 175, "Artem");
 
+	Student st1;
 	Student student(1212, 5454, 54654, "aaaaa");
 	student.SetGroup("first");
 	student.SetProfile("Math");
 
 
+	People people1("Alex");
+	MyChild mychild("John");
 
+
+	Man man;
+	man.PrintInfo(&mychild);
 
 	return 0;
 }
