@@ -598,11 +598,20 @@ public:
 	}
 
 
+	virtual ~Human() = 0;
+
 protected:
 	int weight;
 	int age;
 	int height;
 	std::string name;
+};
+Human::~Human()
+{
+	this->age = 0;
+	this->height = 0;
+	this->name = "";
+	this->weight = 0;
 };
 
 class Student : public Human
@@ -644,6 +653,12 @@ public:
 		std::cout << this->age << ' ' << this->height << ' ' << this->weight << ' ' << this->name << ' ' << this->group << ' ' << this->profile << '\n';
 	}
 
+
+	~Student() override
+	{
+		this->group = "";
+		this->profile = "";
+	}
 
 private:
 	std::string group;
@@ -689,6 +704,12 @@ public:
 	void PrintInfo() override
 	{
 		std::cout << this->age << ' ' << this->height << ' ' << this->weight << ' ' << this->name << ' ' << this->lesson << ' ' << this->experience << '\n';
+	}
+
+	~Professor() override
+	{
+		this->lesson = "";
+		this->experience = 0;
 	}
 
 private:
