@@ -661,7 +661,8 @@ public:
 
 	Professor(const int _weight, const int _age, const int _height, const std::string _name) : Human(_weight, _age, _height, _name)
 	{
-
+		this->experience = 0;
+		this->lesson = "";
 	}
 
 	std::string GetLesson()
